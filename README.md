@@ -18,7 +18,7 @@ Controll access (authentication) of access users that can be used to access any 
 
 ## Routes
 #### https://elciess-ms-auth.herokuapp.com/
-- POST /login
+- POST /auth
 
 ## How to start localy this project ?
 1. clone the project

@@ -1,9 +1,9 @@
+import { User } from '@entities/User'
 import { ICredentials } from '@interfaces/IAuth'
 import { IAuthResponse } from '@interfaces/IRepository'
 import { IUserMongoModel } from '@interfaces/IUser'
 import { UserMongoSchema } from '@models/UserMongo'
 import { IAuthRepository } from '@repositories/IAuthRepository'
-import { createToken } from '@utils/createToken'
 import { matchPassword } from '@utils/matchPassword'
 
 class MongoRepository implements IAuthRepository {
@@ -28,9 +28,9 @@ class MongoRepository implements IAuthRepository {
       return { status: 'fail', statusCode: 404, error: 'Password dont match.' }
     }
 
-    const token: string = createToken(mongoUser.id)
+    const userDTO: User = { ...mongoUser }
 
-    return { status: 'success', statusCode: 202, message: 'User authenticated!', token }
+    return { status: 'success', statusCode: 202, message: 'User authenticated!', user: userDTO }
   }
 }
 
