@@ -15,7 +15,7 @@ class MongoRepository implements IAuthRepository {
       .catch(err => err.message)
 
     if (typeof mongoUser === 'string') {
-      return { status: 'fail', statusCode: 500, error: mongoUser }
+      return { status: 'fail', statusCode: 500, error: `Mongo Error: ${mongoUser}.` }
     }
 
     if (!mongoUser) {
